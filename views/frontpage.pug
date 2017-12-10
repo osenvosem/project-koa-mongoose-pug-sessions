@@ -1,0 +1,15 @@
+extends layout
+block title
+  title Users list
+block content
+  .card.mt-3
+    .card-header Users
+    ul.list-group.list-group-flush
+      each localUser in users
+        li.list-group-item
+          if user.username === localUser.username
+            strong #[a(href=`/user/${localUser.username}`) @#{localUser.username}]
+            small.pl-1
+              em.text-secondary — this is you
+          else
+            a(href=`/user/${localUser.username}`) @#{localUser.username}

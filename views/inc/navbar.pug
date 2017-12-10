@@ -1,0 +1,8 @@
+nav.navbar.navbar-dark.bg-dark
+  a(href="/").navbar-brand Users
+  if user
+    - let displayName = user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : user.firstName ? user.firstName : user.lastName ? user.lastName : user.username;
+    span.text-light Hello, #{displayName}!
+    ul.navbar-nav
+      li.nav-item
+        a(href="/logout").nav-link Logout

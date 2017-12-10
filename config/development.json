@@ -1,0 +1,4 @@
+{
+  "secrets": ["test_secret"],
+  "port": 3000
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet", href="/styles/bootstrap.min.css")
+    link(rel="stylesheet", href="/styles/main.css")
+    block title
+      title Users app
+  body
+    include inc/navbar
+    .container
+      include inc/flash-messages
+      .row.justify-content-center
+        .col.col-sm-10.col-md-8.col-lg-6
+          block content
+    block scripts
+      script(src="/scripts/libs/jquery.min.js")
+      script(src="/scripts/libs/popper.min.js")
+      script(src="/scripts/libs/bootstrap.min.js")
+      script(src="/scripts/main.js")

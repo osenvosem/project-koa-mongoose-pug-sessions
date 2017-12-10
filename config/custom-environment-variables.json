@@ -1,0 +1,5 @@
+{
+  "secrets": "SECRETS",
+  "dbUrl": "MONGODB_URI",
+  "port": "PORT"
+}

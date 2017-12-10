@@ -1,0 +1,18 @@
+if flashMessages && flashMessages.length
+  .row
+    .col
+      each errorObj in flashMessages
+        
+        - let cssType = undefined
+        case errorObj.type
+          when "error"
+            - cssType = "danger"
+          when "warning"
+            - cssType = "warning"
+          when "info"
+            - cssType = "info"
+
+        div(role="alert" class=`alert-${cssType}`).alert.alert-dismissible.fade.show
+          = errorObj.message
+          button(type="button", data-dismiss="alert", aria-label="Close").close
+            span(aria-hidden) &times;

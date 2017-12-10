@@ -1,0 +1,44 @@
+extends layout
+block title
+  title Login
+block content
+  form(action="/login", method="post", name="login", novalidate).p-2
+
+    .form-group
+      label(for="username").col-form-label Username
+      input(
+        type="text",
+        name="username",
+        required,
+        pattern=validation.username,
+        value=oldForm.username || "test"
+      )#username.form-control
+      .invalid-feedback Username is #[strong required] and must be #[strong from 2 to 30] characters long.
+
+    .form-group
+      label(for="password").col-form-label Password
+      input(
+        type="password",
+        name="password",
+        required,
+        pattern=validation.password,
+        value="123123"
+      )#password.form-control
+      .invalid-feedback Password is #[strong required] and must be #[strong from 6 to 30] characters long.
+
+    input(
+      type="hidden",
+      name="_csrf",
+      value=csrf()
+    )
+
+    a(href="/registration")
+      small Don't have an account?
+
+    button(type="submit").btn.btn-primary.float-right Log in
+
+    .card.mt-4
+      .card-header Test credentials
+      .card-body.text-secondary
+        p.card-text.d-inline Login: #[pre.d-inline test]
+        p.card-text.d-inline Password: #[pre.d-inline 123123]

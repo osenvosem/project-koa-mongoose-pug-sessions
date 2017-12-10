@@ -1,0 +1,70 @@
+extends layout
+block title
+  title Edit profile
+block content
+
+  form(action=`/user/${user.username}/edit`, method="post", novalidate).p-2
+
+    .form-group
+      label(for="username").col-form-label Username#[span.text-danger *]
+      input(
+        type="text",
+        id="username",
+        name="username",
+        required,
+        pattern=validation.username,
+        value=user.username
+       ).form-control
+      .invalid-feedback Username is #[strong required] and must be #[strong from 2 to 30] characters long.
+
+    .form-group
+      label(for="email").col-form-label Email#[span.text-danger *]
+      input(
+        type="email",
+        id="email",
+        name="email",
+        required,
+        pattern=validation.email,
+        value=user.email
+      ).form-control
+      .invalid-feedback Email is required and must be a valid email address.
+
+    .form-group
+      label(for="password").col-form-label Password#[span.text-danger *]
+      input(
+        type="password",
+        id="password",
+        name="password",
+        required,
+        pattern=validation.password
+      ).form-control
+      .invalid-feedback Please provide either your existing password or a new one.
+
+    .form-group
+      label(for="firstName").col-form-label First name
+      input(
+        type="text",
+        id="firstName",
+        name="firstName",
+        pattern=validation.firstName,
+        value=user.firstName
+      ).form-control
+      .invalid-feedback First name must consist of alphanumeric characters and be #[strong up to 30] characters long.
+
+    .form-group
+      label(for="lastName").col-form-label Last name
+      input(
+        type="text",
+        id="lastName",
+        name="lastName",
+        pattern=validation.lastName,
+        value=user.lastName
+      ).form-control
+      .invalid-feedback Last name must consist of alphanumeric characters and be #[strong up to 30] characters long.
+
+    input(type="hidden", name="_csrf", value=csrf())
+
+    a(href=`/user/${user.username}`)
+      small Back to the user details
+
+    button(type="submit").btn.btn-primary.float-right Update profile

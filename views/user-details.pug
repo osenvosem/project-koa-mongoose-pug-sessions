@@ -1,0 +1,26 @@
+extend layout
+block title
+  title User details
+block content
+  a(href="/").btn.btn-outline-info.btn-sm.mt-2 Go back
+  .card.mt-2
+    .card-body
+      - const { _id, firstName, lastName, username, email, createdAt } = userDetails;
+      if firstName || lastName
+        h4.card-title #{firstName} #{lastName} 
+          span.d-inlin
+            small.text-secondary.font-italic @#{username}
+      else
+        h4.card-title @#{username}
+      p.card-text
+        span.text-muted Email: 
+        span #{email}
+      p.card-text
+        span
+          em Registered since the #{moment(createdAt).format("Do [of] MMMM, YYYY")}
+      
+      if user._id.toString() === _id.toString()
+        a(href=`/user/${username}/edit`).card-link Edit profile
+        form(method="POST", action=`/user/${username}/delete`).d-inline
+          input(type="hidden", name="_csrf", value=csrf())
+          a(href="#" onclick="this.parentElement.submit()").card-link.text-danger.float-right Delete account
