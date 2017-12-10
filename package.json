@@ -2,7 +2,8 @@
   "name": "users-app",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Sergei Samsonov",
+  "author":
+    "Sergei Samsonov <osenvosem@gmail.com> (https://github.com/osenvosem)",
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=production node index.js",
